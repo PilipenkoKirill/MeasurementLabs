@@ -1,0 +1,41 @@
+%!TEX program = xelatex.exe
+\documentclass[14pt,a4paper]{article}
+\input{setup.tex}
+\title{Лабораторная работа №5 \\ \textit{Оцифровка и построение графиков в программе OriginPro}}
+\begin{document}
+\maketitle
+
+\begin{center}
+    \textbf{Ход работы:}
+\end{center}
+\section{Установка программы и знакомство с интерфейсом}
+\begin{enumerate}
+    \item Скачайте по \href{https://mega.nz/folder/4R9xHYgT#LjgmYjooWK4WEsR4ylHn_w}{ссылке} программу;
+    \item Установить программу в режиме OriginPro Trial следуя правилам установщика; 
+    \item Заменить файлами из папки \verb=Crack\Fix3= (\verb=ok.dll= и \verb=ou.dll=) соответствующие файлы в папке с установленной программой (стандартный путь: \\ \verb=c:\Program Files\OriginLab\Origin2021\=, который у Вас может отличаться).
+\end{enumerate}
+\section{Оцифровка графиков}
+\begin{enumerate}
+    \item После установки и запуска программы откройте специальный инструмент OriginPro для оцифровки графиков (tools$\rightarrow$Digitizer). Импортируёте изображение. \\
+    \includegraphics[width=.7\textwidth]{HeatCapExm.png} 
+    \item Регулируйте положение линий, чтобы они соответствовали определённым значениям на осях рисунка. Укажите якорные значения в колонке Axis Value \\
+    \includegraphics[width=.7\textwidth]{HeatCapExmDragLines.png} 
+    \item Выберете ручной (Manually Pick Points) или автоматический (Auto Pick Points) способ задания точек. Оцифруйте все точки на большом графике.
+    \item После этого нажмите на кнопку Go to Data в окне Digitizer и экспортируйте таблицу в формат Excel (В главном окне File$\rightarrow$Export$\rightarrow$Excel). Желательно использовать формат .xslx
+\end{enumerate}   
+\section{Построение графиков}
+\begin{enumerate}
+    \item Используя данные из предыдущего задания составьте график. Дайте русское названия осей (шрифт: кегль -- 14 пт, семейство -- Roman) и расположите их по центру числовой шкалы;
+    \item Экспортировать рисунок в векторном формате, например в .wmf;
+\end{enumerate}
+
+% \textbf{Контрольные вопросы} \\
+% \begin{enumerate}
+%     \item 
+% \end{enumerate}
+% \input{method.tex}
+% \section{Рекомендуемая литература}
+% \begin{enumerate}
+%     \item \url{https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiLuJmd6-L6AhWrk4sKHZoBCE0QFnoECCUQAQ&url=https%3A%2F%2Foit.colorado.edu%2Fsites%2Fdefault%2Ffiles%2FOrigin2016_UserGuide.pdf.pdf&usg=AOvVaw1_NeiHINEkOymJnRjABlx8}
+% \end{enumerate}
+\end{document}

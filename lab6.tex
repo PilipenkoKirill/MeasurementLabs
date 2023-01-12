@@ -1,0 +1,230 @@
+%!TEX program = xelatex.exe
+\documentclass[14pt,a4paper]{article}
+\input{setup.tex}
+\title{Лабораторная работа №6 \\ \textit{Использование программы Excel для решения задач на законы Кирхгофа.}}
+\begin{document}
+\maketitle
+Системой линейных уравнений с \emph{n} неизвестными называют систему
+уравнений вида
+\begin{equation} \label{sysLinEquat}
+    \begin{cases}
+        a_{11}x_1 + a_{12}x_2 + \ldots + a_{1n}x_n = b_1 \\
+        a_{21}x_1 + a_{22}x_2 + \ldots + a_{2n}x_n = b_2 \\
+        \vdots \\
+        a_{n1}x_1 + a_{n2}x_2 + \ldots + a_{nn}x_n = b_n 
+    \end{cases}
+\end{equation}
+где \emph{x\textsubscript{1},
+x\textsubscript{2},\ldots,x\textsubscript{n} --} неизвестные величины,
+\emph{a\textsubscript{nm}} (\emph{n=1,2,\ldots,n, m=1, 2,\ldots,n}) --
+числовые коэффициенты (коэффициенты при неизвестных),
+\emph{b\textsubscript{1}, b\textsubscript{2},\ldots,b\textsubscript{n}}
+-- свободные члены. Форма записи алгебраической линейной системы в виде
+\ref{sysLinEquat} называется нормальной, целое число \emph{n} -- размерность системы.
+Решением системы уравнений \ref{sysLinEquat} является набор значений
+\emph{x\textsubscript{1}, x\textsubscript{2},\ldots,x\textsubscript{n}},
+который все уравнения системы обращает в тождества. Система уравнений
+называется совместной, если она имеет хотя бы одно решение, и
+несовместной \emph{--} в противном случае. Совместная система называется
+определенной\emph{,} если она имеет единственное решение, и
+неопределенной\emph{,} если она имеет больше одного решения.
+
+Формулы для нахождения решений системы по методу Крамера имеют вид
+дробей: 
+% \footnote{Линейная алгебраическая система несовместна (не имеет решений), если ∆=det \emph{A=0.}
+\[ x_1 = \frac{|A_1|}{|A|}, \quad  x_2 =\frac{|A_2|}{|A|}, \quad \ldots, \quad x_n = \frac{|A_n|}{|A|}\]
+где $|A|, |A_1|, |A_2|, \ldots, |A_n|$~---~определители матрицы, составленные по системе уравнений \ref{sysLinEquat}
+\begin{equation}
+    \begin{aligned}
+        |A|=
+        \begin{vmatrix}
+            a_{11} & a_{12}  & \cdots   & a_{1n}   \\
+            a_{21} & a_{22}  & \cdots   & a_{2n}  \\
+            \vdots & \vdots  & \ddots   & \vdots  \\
+            a_{n1} & a_{n2}  & \cdots\  & a_{nn}  \\
+        \end{vmatrix}, \;
+    |A_1|=
+    \begin{vmatrix}
+        b_{1} & a_{12}  & \cdots   & a_{1n}   \\
+        b_{2} & a_{22}  & \cdots   & a_{2n}  \\
+        \vdots & \vdots  & \ddots   & \vdots  \\
+        b_{n} & a_{n2}  & \cdots\  & a_{nn}  \\
+    \end{vmatrix}, \\
+    |A_2|=
+    \begin{vmatrix}
+        a_{11} & b_{1}  & \cdots   & a_{1n}   \\
+        a_{21} & b_{2}  & \cdots   & a_{2n}  \\
+        \vdots & \vdots  & \ddots   & \vdots  \\
+        a_{n1} & b_{n}  & \cdots\  & a_{nn}  \\
+    \end{vmatrix}, \ldots ,  
+    |A_n|=
+    \begin{vmatrix}
+        a_{11} & a_{12}  & \cdots   & b_{n}   \\
+        a_{21} & a_{22}  & \cdots   & b_{n}  \\
+        \vdots & \vdots  & \ddots   & \vdots  \\
+        a_{n1} & a_{n2}  & \cdots\  & b_{n}  \\
+    \end{vmatrix}
+\end{aligned}
+\end{equation}
+\begin{center}
+    \textbf{Способ решения системы линейных уравнений в Excel}
+\end{center}
+Из системы уравнений \ref{sysLinEquat} и правила перемножения матриц можно составить выражение:
+\begin{equation}
+    \begin{pmatrix}
+        a_{11} & a_{12}  & \cdots   & a_{1n}   \\
+        a_{21} & a_{22}  & \cdots   & a_{2n}  \\
+        \vdots & \vdots  & \ddots   & \vdots  \\
+        a_{n1} & a_{n2}  & \cdots\  & a_{nn}  \\
+    \end{pmatrix} \times
+    \begin{pmatrix}
+        x_{1}   \\
+        x_{2}  \\
+        \vdots  \\
+        x_{n}   \\
+    \end{pmatrix} = 
+    \begin{pmatrix}
+        b_{n}   \\
+        b_{n}  \\
+        \vdots  \\
+        b_{n}  \\
+    \end{pmatrix}\; \text{или} \; A \times X = B,
+\end{equation}
+и тогда будет справедливо уравнение 
+\begin{equation} \label{Xmatrix}
+    X = A^{-1}\times B,
+\end{equation}
+где $A^{-1}$~---~обратная матрица матрицы $A$ (в Excel используется функция  \verb=МОБР=). Для перемножения матриц используется функция \verb=МУМНОЖ= (проще всего начать вводить функцию и нажать на \verb=TAB=).
+
+Другими словами, чтобы найти матрицу, состоящую из неизвестных величин, нужно найти обратную матрицу матрицы, состоящей из числовых коэффициентов, а потом перемножить её с матрицей из свободных членов. Помните, что перемножение матриц \emph{некоммутативно}!
+
+\begin{center}
+    \textbf{ Правила Кирхгофа}
+\end{center}
+\begin{wrapfigure}{r}{.25\textwidth}
+    \begin{circuitikz}[american]
+        \draw (2,0) to[short,i=$I_3$, -*] (2,2) to[short, i=$I_2$] (4,4);
+        \draw (0,4) to[short,i=$I_1$] (2,2);
+    \end{circuitikz}
+\end{wrapfigure}
+
+\textbf{Первое правило Кирхгофа (правило токов Кирхгофа):} алгебраическая сумма токов ветвей, сходящихся в каждом узле любой цепи, равна нулю. При этом направленный к узлу ток принято считать положительным, а направленный от узла — отрицательным:
+\begin{equation}
+    \sum\limits_j^n I_j = 0
+\end{equation}
+
+\begin{wrapfigure}{r}{.3\textwidth}
+    \begin{circuitikz}[american]
+        \draw(2,1) to[generic, l=$R_1$, i<=$I_1$] (0.6,3.1) to[battery1, v=$\varepsilon_1$, -*] (0,4) -- (-0.5,4.5);
+        \draw(0,4) to[generic, l=$R_3$, i<=$I_3$] (2.6,4) to[battery1, v=$\varepsilon_3$, -*] (4,4) -- (4.5,4.5);
+        \draw(4,4) to[generic, l=$R_2$, i<=$I_2$] (2.6,1.9) to[battery1, v=$\varepsilon_2$, -*] (2,1) -- (2,0.5);
+        \draw[thick, ->, red] (2.6,2.85) arc (0:320:0.6cm);
+    \end{circuitikz}
+\end{wrapfigure}
+\textbf{Второе правило Кирхгофа (правило напряжений Кирхгофа):} алгебраическая сумма напряжений на резистивных элементах замкнутого контура равна алгебраической сумме ЭДС, входящих в этот контур.
+
+\begin{equation}
+    \sum\limits_k^n\varepsilon_k = \sum\limits_k^m I_kR_k
+\end{equation}
+
+\textbf{Пример}
+
+\begin{tabular}{p{3cm}|l}
+    Дано & \multirow{7}{*}{\includegraphics[width=.5\textwidth]{Kirchhoff.png}}\\
+    $R_1 = 100$~Ом \\ 
+    $R_2 = 150$~Ом \\
+    $R_3 = 150$~Ом \\
+    $E_1 = 75$~В\\
+    $E_2 = 100$~В\\
+    \hhline{-~}
+    $I_1,I_2,I_3 - ?$
+\end{tabular}
+
+Используя \textbf{первое правило Кирхгофа}, можно записать n-1 уравнений для цепи, где n~---~количество узлов. В нашем случае количество узлов n=2, а значит нужно составить только одно уравнение:
+\begin{equation} \label{firstLow}
+    I_3 -I_1 - I_2 = 0
+\end{equation}
+
+Затем используя \textbf{второе правило} составим уравнения для первого и второго контуров цепи. Направления обхода выбраны произвольными, при этом если направление тока через резистор совпадает с направлением обхода, берем со знаком плюс, и наоборот если не совпадает, то со знаком минус. Аналогично с источниками ЭДС.
+
+На примере первого контура --- ток $I_1$ и $I_3$ совпадают с направлением обхода контура (против часовой стрелки), ЭДС $\varepsilon_1$ также совпадает, поэтому берем их со знаком плюс.
+
+Уравнения для первого и второго контуров по второму закону будут:
+\begin{equation} \label{secondLow}
+    \begin{split}
+        R_1I_1 + R_3I_3 & = \varepsilon_1 \\
+        R_2I_2 +R_3I_3 & = \varepsilon_2
+    \end{split}
+\end{equation}
+
+Уравнения \ref{firstLow} и \ref{secondLow} образуют систему
+
+\begin{equation}
+    \begin{cases}
+        I_3 -I_1 - I_2 = 0\\
+        R_1I_1 + R_3I_3 = \varepsilon_1 \\
+        R_2I_2 +R_3I_3 = \varepsilon_2,
+    \end{cases}
+\end{equation}
+Подставив значения из <<Дано>> получим:
+\begin{equation}
+    \begin{cases}
+        -I_1 -I_2 + I_3 = 0\\
+        100I_1 + 150I_3 = 75 \\
+        150I_2 + 150I_3 = 100,
+    \end{cases}
+\end{equation}
+И тогда матрицы из коэффициентов и свободных членов соответственно:
+\begin{equation}
+    A = \begin{pmatrix}
+        -1 & -1   & 1   \\
+        100 & 0   & 150  \\
+        0 & 150   & 150  \\
+    \end{pmatrix}; \quad B =
+    \begin{pmatrix}
+        0  \\
+        75  \\
+        100 \\
+    \end{pmatrix}
+\end{equation}
+\progress{}
+
+
+Используя первое и второе правила Кирхгофа получите систему уравнений для каждой электрической схемы. Используя уравнение \ref{Xmatrix} получите матрицу токов, проходящих через каждый элемент цепи.
+\section{}
+\begin{wrapfigure}[4]{l}{.3\textwidth}
+        \begin{circuitikz}[american, scale=.53, transform shape]
+            \draw (0,0) to [battery1, v_=$\varepsilon_1$, l=$r_1$] (0,-3);
+            \draw (2.3,0) to [battery1, v_=$\varepsilon_2$, l=$r_2$, *-*] (2.3,-3);
+            \draw(0,0) to (2,0) to [generic,l_=$R_{1}$,i=$I_{1}$] (6,0) to (8,0);
+            \draw(6,0) to[generic,l_=$R_{2}$,i=$I_{2}$,*-*](6,-3);
+            \draw (6,0) to (8,0) to [I, l_=$G$,i=$I_{G}$] (8,-3);
+            \draw(8,-3) to [generic,l_=$R_{3}$] (0,-3);
+        \end{circuitikz}
+\end{wrapfigure}
+Найти величину тока через гальванометр $G$, включенный в цепь, если $\varepsilon_1=\varepsilon_2=1,5$ В, внутренние сопротивления источников ЭДС равны $r_1=r_2=0,5$ Ом, $R_1=R_2=2$ Ом, $R_3=1$ Ом, $R_G=3$ Ом.
+
+\section{}
+\begin{wrapfigure}[4]{l}{.3\textwidth}
+    \begin{circuitikz}[american, scale=.65, transform shape]
+        \draw(0,0) to[generic, l=$R_1$] (0,2) to (1,2) to[generic, l=$R_2$] (1,0) to (0,0);
+        \draw(0.5,2) to[battery1, v_<=$\varepsilon_1$,*-, invert] (0.5,3) to (5.5,3) to [short,-*] (5.5,2);
+        \draw(5,0) to[generic, l=$R_4$] (5,2) to (6,2) to[generic, l=$R_5$] (6,0) to (5,0);
+        \draw(5.5,0) to[short, *-] (5.5,-0.5) to[generic, l=$R_6$] (3,-0.5) to[generic, l=$R_7$] (0.5,-0.5) to [short, -*] (0.5,0);
+        \draw(3,-0.5) to[generic, l=$R_3$, *-] (3,2) to[battery1, v_<=$\varepsilon_2$,-*, invert] (3,3);
+\end{circuitikz}
+\end{wrapfigure}
+Найти величины токов во всех участках цепи, если $\varepsilon_1=20$ В, $\varepsilon_2=33$ В, $r_1=0,2$ Ом, $r_2=0,5$ Ом, $R_1=0,8$ Ом, $R_2=2$ Ом, $R_3=14,3$ Ом, $R_4=23,4$ Ом, $R_5=34,3$ Ом, $R_6=40,3$ Ом, $R_7=12$ Ом.
+
+\section{}
+\begin{wrapfigure}[7]{l}{.3\textwidth}
+    \begin{circuitikz}[american, scale=.7, transform shape]
+        \draw(0,0) to [battery1, v<=$\varepsilon_1$, l_=$r_1$, invert]++ (0,1.5) to[generic, l=$R_1$] (0,4) to (2.2,4) to[generic, l=$R_4$] (5,4) to[generic, l=$R_3$] (5,1.5) to[battery1, v_=$\varepsilon_3$, l=$r_3$] (5,0) to (0,0);
+        \draw(2.2,0) to[battery1, v<=$\varepsilon_2$, l_=$r_2$,*-,invert] (2.2,1.5) to[generic, l=$R_2$, -*] (2.2,4);
+    \end{circuitikz}
+\end{wrapfigure}
+Определить величину токов во всех участках цепи и мощность, развиваемую источниками ЭДС, если $\varepsilon_1=6$ В, $\varepsilon_2=10$ В, $E_3=20$ В, $r_1=0,2$ Ом, $r_2=0,2$ Ом, $r_3=0,4$ Ом, $R_1=19,8$ Ом, $R_2=45,8$ Ом, $R_3=100$ Ом, $R_4=99,6$ Ом. 
+% \begin{enumerate}
+%     \item 
+% \end{enumerate} 
+\end{document}

@@ -1,0 +1,66 @@
+%!TEX program = xelatex.exe
+\documentclass[14pt,a4paper]{article}
+\input{setup.tex}
+\title{Лабораторная работа №9 \\ \textit{Построение графиков и символические вычисления в Mathcad}}
+\begin{document}
+\maketitle
+
+\progress{}
+\section{Работа с 2D-графиками}
+\begin{enumerate}
+	\item Постройте параметрический график \\
+	$x=\sin{t}, \quad y = \cos{t}$
+	\item Постройте параметрический график \\
+	$x=16\sin^3t$ \\
+	$y=13\cos{t} - 5\cos{2t} - 2\cos{3t} - \cos{4t}$
+	\item Подберите параметрические уравнения и постройте график спирали в декартовой системе координат. \textbf{Подсказка: задайте положительную область определения и модифицируйте параметрический график из пункта 1}\\
+	\begin{tikzpicture}
+		\begin{axis}[
+			trig format plots=rad,
+			axis equal,
+			grid = major,
+		]
+		\addplot [smooth, domain=0:16*pi, samples=200, orange] ({x*sin(x)}, {x*cos(x)});
+		\end{axis}
+	\end{tikzpicture}
+	\item Построить в полярной системе координат график функции $R(\phi) = a·\cos{(m·\phi)}$, где $a = 2$, $m = 4$, $\phi$ меняется в пределах от $-π$ до $+π$ с шагом $0,01·π$.
+\end{enumerate}
+
+\section{Работа с 3D-графиками}
+\noindent Построить графики
+\begin{enumerate}
+	\item $f(x,y) = sin(x^2+y^2)$, $x,y \in [-1;1]$
+	\item $X:=\sin \left(\alpha\right) \cdot \cos \left(\beta\right) \quad Y:=\sin \left(\alpha\right) \cdot \sin \left(\beta\right) \quad Z:=\cos \left(\alpha\right)$\\
+	$\alpha \in [0;\pi]$, $\beta \in [0;\pi]$
+	\item $X=\cos{(u)}(\cos{(v)}+3)$ \\
+	$Y=\sin{(u)}(\cos{(v)}+3)$ \\
+	$Z=\sin{(v)}$ \\
+	$u\in [−\pi;\pi],\quad v \in [−\pi;\pi]$
+\end{enumerate}
+
+\section{Анализ функций}
+\begin{enumerate}
+	\item Упростите выражение $\frac{\frac{(x-2 y)^2+1}{\left(2-\left(x+\frac{y}{x}+1\right)^2\right)}}{x}$.
+	\item Раскройте скобки и приведите подобные члены в выражении $\left(\frac{\left(x^2-1\right)}{x+2}+3\right)^2$.
+	\item Разложите на множители выражение $a^{8}-16$.
+	\item Получить относительно $x$ массив полиномиальных коэффициентов \\ $(x+y)^4$.
+\end{enumerate}
+
+\noindent  Найти следующие интегралы с помощью опции solve
+\begin{multicols}{2}
+	\begin{enumerate}
+		\item $\int\limits_1^y \frac{\sin x}{\sin x+\cos x} \cdot d x;$
+		\item $\int\limits_0^a x \cdot(\sin x)^2 \cdot d x$
+	\end{enumerate}
+\end{multicols}
+\noindent Представить следующие функции в виде разложения в ряд Тейлора (ключевое слово \texttt{series}), графически показать, при каких значениях аргумента $x$ аппроксимация многочленом является удовлетворительной:
+\begin{multicols}{2}
+	\begin{enumerate}
+		\item $\sqrt[3]{x^2+2};$ 
+		\item $\sqrt{x+\sin{x}}$
+	\end{enumerate}
+\end{multicols}
+
+\nocite{Plis2003,Krestlev2010,MathCADshortcuts,Ochkov2016}
+\printbibliography[title={Рекомендуемая литература}]
+\end{document}

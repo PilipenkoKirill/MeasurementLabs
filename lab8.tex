@@ -1,0 +1,79 @@
+%!TEX program = xelatex.exe
+\documentclass[14pt,a4paper]{article}
+\input{setup.tex}
+\usepackage{pgfplotstable}
+\usepackage{booktabs}
+\pgfplotstableset{
+every head row/.style={before row=\toprule,after row=\midrule},
+every last row/.style={after row=\bottomrule}}
+\title{Лабораторная работа №8 \\ \textit{Введение в Mathcad}}
+\begin{document}
+\maketitle
+
+\progress{}
+\section{Установка программы}
+\begin{enumerate}
+	\item Скачайте программный пакет по \href{https://mega.nz/folder/RcEhUTQT#3cT2O6J15wOCQbFn4E7BBw}{ссылке};
+	\item Зайдите в папку «PTC.LICENSE.WINDOWS.2021-03-11-SSQ» по пути \path{_SolidSQUAD_\_SolidSQUAD_\PTC.LICENSE.WINDOWS.2021-03-11-SSQ}
+    и запустите \texttt{FillLicense.bat};
+	\item Сгенерированный файл \path{PTC_D_SSQ.dat} скопировать в \path{C:\Program Files\PTC};
+	\item Создайте переменную среды \path{PTC_D_LICENSE_FILE}, указывающую на этот файл (\path{PTC_D_SSQ.dat});
+	\item Установите PTC Mathcad Prime 7.0.0.0 Win64. Для этого необходимо иметь предустановленную на компьютере программу DAEMON Tools;
+	\item Перезаписать исходную папку программы <Mathcad Prime 7.0.0.0>
+    (по умолчанию: \path{C:\Program Files\PTC\Mathcad Prime 7.0.0.0} ) на взломанную;
+	\item При первом запуске Mathcad Prime 7.0 при запросе лицензии в PTC Mathcad License Wizard: Выберите «Настроить продукт для использования существующей лицензии» > «Далее» > «Файл» > «Обзор» > (перейдите к файлу \path{PTC_D_SSQ.dat}, сохраненному на вашем компьютере) > Настройка лицензии > Выход.
+\end{enumerate}
+\section{Арифметические вычисления}
+\noindent Вычислить значение выражения
+\begin{enumerate}
+	\item $\left(\frac{(2,7-0,8 \cdot 1,6) \cdot \frac{1}{3}}{(5,2-1,4 \cdot 2,7): \frac{3}{7}}+0,125\right): 7,1+0,38$;
+	\item $\frac{\left(\frac{17}{40}+0,6-0,005\right) \cdot 1,7}{\frac{5}{6}+\frac{1}{3}-\frac{23}{30}}+\frac{4,75+\frac{1}{2}}{31: \frac{5}{7}}$.
+\end{enumerate}
+Задать ранжированную переменную:
+\begin{enumerate}
+	\item переменная х меняется в пределах от – 5 до 5 с шагом 1;
+	\item переменная х меняется в пределах от 1 до 2 с шагом 0,1.
+\end{enumerate}
+\section{Определение функции и пределы}
+\noindent Задать функцию и определить ее значения в указанной области:
+
+\begin{enumerate}
+	\item $\mathrm{y}(\mathrm{x})=\sqrt{x^3+2 x^2-1}+\frac{x^3+2}{x-1}, \mathrm{x}=1 . .10$;
+	\item $\Phi(\varphi)=\operatorname{tg}\left(\sin ^2 \varphi\right)-\frac{\cos \varphi}{1+\sin \varphi}, \varphi=0, \pi / 4 . . \pi$.
+\end{enumerate}
+\noindent Вычислите пределы:
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\lim\limits_{x \rightarrow 1} \frac{x^3-1}{\ln x}$;
+	\item $\lim\limits_{x \rightarrow 0}\left(\frac{1}{x}-\frac{1}{e^x-1}\right)$.
+\end{enumerate}
+\end{multicols}
+\section{Дифференцирование и интегрирование}
+\noindent Вычислите символьно и численно (значения переменной задайте самостоятельно):
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\frac{d}{d z}\left(z^3-\operatorname{tg}(z) /\left(z^2-2\right)\right)$;
+	\item $\frac{d^2}{d y^2}\left(a \sin (y)+\ln \left(y^3\right)^2\right)$.
+\end{enumerate}
+\end{multicols}
+\noindent Найти неопределенные интегралы:
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\int \frac{\sqrt{x}-2 \sqrt[3]{x^2}+2}{\sqrt[4]{x}} dx$;
+	\item $\int \frac{\ln x d x}{x \sqrt{1+\ln x}}$.
+\end{enumerate}
+\end{multicols}
+\noindent Найти определенные интегралы:
+\begin{multicols}{2}
+\begin{enumerate}
+	\item $\int\limits_{-\pi/4}^{2\pi} \operatorname{arctg}(\sqrt[3]{6 x-1}) d x$;
+	\item $\int\limits_{0}^{\infty} x^{z-1}e^{-z}dz$ (гамма-функция Эйлера).
+\end{enumerate}
+\end{multicols}
+% \questions{}
+% \begin{enumerate}
+% 	\item 
+% \end{enumerate}
+\nocite{Plis2003,Krestlev2010,MathCADshortcuts,Ochkov2016}
+\printbibliography[title={Рекомендуемая литература}]
+\end{document}

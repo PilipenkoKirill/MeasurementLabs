@@ -1,0 +1,95 @@
+% \usepackage[pdftex,
+%     pdfauthor={К.С.~Пилипенко},
+%     pdfsubject={The Subject},
+%     pdfkeywords={Первое ключевое слово, второе ключевое слово},
+%     pdfproducer={LuaLatex with hyperref},
+%     pdfcreator={Lualatex},
+%     % hidelinks
+% ]{hyperref}
+%%%%%%%%%%%%%%Пользовательские команды%%%%%%%%%
+\usepackage{hhline}
+\usepackage{multirow}
+\usepackage{latexsym,amsmath,amssymb,amsbsy,graphicx}
+\usepackage{listings}
+\usepackage{icomma}
+\usepackage[obeyspaces]{url} %Позволяет прописывать путь к файлам
+\usepackage[american,siunitx]{circuitikz}
+\usepackage[version=4]{mhchem} % the canonical chemistry package (example: \ce{^{32}_{15}P})
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+\graphicspath{{images/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdfauthor={К.С.~Пилипенко},
+    pdfsubject={Основы обработки результатов исследования в физике},
+    % pdfkeywords={Первое ключевое слово, второе ключевое слово},
+    pdfproducer={LuaLatex with hyperref},
+    pdfcreator={Lualatex},
+    pdfpagemode=FullScreen,
+    }
+\urlstyle{same}
+%Форматирование разделов
+\usepackage{titlesec}
+\usepackage{multicol} %Многоколоночный список
+%%% Кастомизация разделов
+\titleformat
+{\section} % command
+[block] % shape
+{\normalfont\bfseries\itshape} % format
+{Задание №\thesection.}{0.5em}{} % label
+\newcommand{\progress}{\begin{center}\large\bfseries Ход работы\end{center}}
+\newcommand{\questions}{\begin{center}\large\bfseries  Контрольные вопросы \end{center}}
+%%%%%%%%%%%%%%%%%%%%%%%%Оформление по ГОСТУ
+\usepackage{fontspec}
+\setmainfont[Renderer=Basic,Ligatures={TeX}]{Times New Roman}
+% \usepackage[english,russian]{babel} %Поддержка русской локализации
+\setmonofont{dejavusansmono} % verbatim с кириллицей
+\usepackage[14pt]{extsizes} % для того чтобы задать нестандартный 14-ый размер шрифта
+\usepackage{indentfirst} %Задаёт отступ самого первого абзаца
+\setlength\parindent{1.25cm}
+\usepackage[a4paper, left=3cm, top=1.5cm, right=1.5cm, bottom=2cm]{geometry}
+\usepackage{setspace}
+\sloppy %Выравнивание текст по ширине и решение проблемы переполнением строки
+\onehalfspacing %Полуторный интервал
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Добавление списка литературы
+\usepackage{polyglossia}[2014/05/21]            % Поддержка многоязычности (fontspec подгружается автоматически)
+\setmainlanguage[babelshorthands=true]{russian}  % Язык по-умолчанию русский с поддержкой приятных команд пакета babel
+\setotherlanguage{english}                       % Дополнительный язык = английский (в американской вариации по-умолчанию)
+\setmonofont{Courier New}
+\newfontfamily\cyrillicfonttt{Courier New}
+    \defaultfontfeatures{Ligatures=TeX,Mapping=tex-text}
+\setmainfont{Times New Roman}
+\newfontfamily\cyrillicfont{Times New Roman}
+\setsansfont{Arial}
+\newfontfamily\cyrillicfontsf{Arial}
+\usepackage[
+    bibencoding=utf8,% кодировка bib файла
+    sorting=none,% настройка сортировки списка литературы
+    style=gost-numeric,% стиль цитирования и библиографии (по ГОСТ)
+    language=autobib,% получение языка из babel/polyglossia, default: autobib % если ставить autocite или auto, то цитаты в тексте с указанием страницы, получат указание страницы на языке оригинала
+    autolang=other,% многоязычная библиография
+    clearlang=true,% внутренний сброс поля language, если он совпадает с языком из babel/polyglossia
+    defernumbers=true,% нумерация проставляется после двух компиляций, зато позволяет выцеплять библиографию по ключевым словам и нумеровать не из большего списка
+    sortcites=true,% сортировать номера затекстовых ссылок при цитировании (если в квадратных скобках несколько ссылок, то отображаться будут отсортированно, а не абы как)
+    doi=false,% Показывать или нет ссылки на DOI
+    isbn=false,% Показывать или нет ISBN
+]{biblatex}
+\DeclareSourcemap{ %модификация bib файла перед тем, как им займётся biblatex 
+    \maps{
+        \map{% перекидываем значения полей language в поля langid, которыми пользуется biblatex
+            \step[fieldsource=language, fieldset=langid, origfieldval, final]
+            \step[fieldset=language, null]
+        }
+    }
+}
+\emergencystretch=1em
+\addbibresource{literature.bib}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\author{\href{mailto:www-kirill.pilipenko@yandex.ru}{К.С.~Пилипенко}} %Через \and можно добавить ещё авторов
+\date{\the\year{}}
