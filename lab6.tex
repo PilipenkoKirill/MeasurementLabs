@@ -130,7 +130,12 @@ x\textsubscript{2},\ldots,x\textsubscript{n} --} неизвестные вели
 \textbf{Пример}
 
 \begin{tabular}{p{3cm}|l}
-    Дано & \multirow{7}{*}{\includegraphics[width=.5\textwidth]{Kirchhoff.png}}\\
+    Дано & \multirow{7}{*}{\begin{circuitikz}[american]
+        \draw(0,0) to[battery1, v_<=$\varepsilon_1$, invert](3,0) to[generic, l_=$R_2$, i_<=$I_2$, invert] (6,0) to (6,3) to[battery1, v_=$\varepsilon_2$] (3,3) to[generic,l_=$R_1$,i=$I_1$] (0,3) to (0,0);
+        \draw(3,0) to[generic,l=$R_3$,i=$I_3$,*-*](3,3);
+        \draw[thick, ->, red, xshift=0.6cm] (1.5,1.5) arc (0:320:0.6cm) node[pos=0, xshift=-0.6cm] {I};
+        \draw[thick, ->, red, anchor=center, xshift=0.6cm] (4.5,1.5) arc (0:-320:0.6cm) node[pos=0, xshift=-0.6cm] {II};
+    \end{circuitikz}}\\
     $R_1 = 100$~Ом \\ 
     $R_2 = 150$~Ом \\
     $R_3 = 150$~Ом \\
@@ -139,6 +144,8 @@ x\textsubscript{2},\ldots,x\textsubscript{n} --} неизвестные вели
     \hhline{-~}
     $I_1,I_2,I_3 - ?$
 \end{tabular}
+
+
 
 Используя \textbf{первое правило Кирхгофа}, можно записать n-1 уравнений для цепи, где n~---~количество узлов. В нашем случае количество узлов n=2, а значит нужно составить только одно уравнение:
 \begin{equation} \label{firstLow}

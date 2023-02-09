@@ -7,6 +7,10 @@
 %     % hidelinks
 % ]{hyperref}
 %%%%%%%%%%%%%%Пользовательские команды%%%%%%%%%
+\usepackage{calc}
+\usepackage{color}
+\usepackage{listing}
+\usepackage{svg}
 \usepackage{hhline}
 \usepackage{multirow}
 \usepackage{latexsym,amsmath,amssymb,amsbsy,graphicx}
@@ -14,6 +18,7 @@
 \usepackage{icomma}
 \usepackage[obeyspaces]{url} %Позволяет прописывать путь к файлам
 \usepackage[american,siunitx]{circuitikz}
+\def\centerarc[#1][#2](#3:#4:#5){\draw[#1]($(#2)+({#5*cos(#3)},{#5*sin(#3)})$)}
 \usepackage[version=4]{mhchem} % the canonical chemistry package (example: \ce{^{32}_{15}P})
 \usepackage{graphicx}
 \usepackage{pgfplots}
@@ -91,5 +96,5 @@
 \emergencystretch=1em
 \addbibresource{literature.bib}
 %%%%%%%%%%%%%%%%%%%%%%%%
-\author{\href{mailto:www-kirill.pilipenko@yandex.ru}{К.С.~Пилипенко}} %Через \and можно добавить ещё авторов
+\author{\href{mailto:www-kirill.pilipenko@yandex.ru}{К.С.~Пилипенко} \href{https://github.com/PilipenkoKirill/MeasurementLabs}{\includegraphics[width=.5cm]{images/gitHubLogo.pdf}}} %Через \and можно добавить ещё авторов
 \date{\the\year{}}
