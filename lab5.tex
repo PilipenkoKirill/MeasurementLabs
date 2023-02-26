@@ -1,41 +1,62 @@
 %!TEX program = xelatex.exe
 \documentclass[14pt,a4paper]{article}
 \input{setup.tex}
-\title{Лабораторная работа №5 \\ \textit{Оцифровка и построение графиков в программе OriginPro}}
+\title{Лабораторная работа №5 \\ \textit{Использования метода наименьших квадратов для аппроксимации результатов совместных измерений}}
 \begin{document}
 \maketitle
+Пусть имеется два набора экспериментальных данных: $x_{i}$ и $y_{i}$, где ${i=1,...n}$ такие что между ними предполагается зависимость вида $y = f(x)$. 
+Вводится некоторая (в простейшем случае линейная) функция $f(x, \{a_i\})$, которая определяется множеством неизвестных параметров $\{a_i\}$, где $i={1,...n}$.
+
+Ставится задача получить такое множество, чтобы совокупность погрешностей $r_i=y_i-f(x_i, \{a_i\})$ была в некотором смысле минимальной.
+
+Согласно методу наименьших квадратов решением этой задачи является набор параметров $\{a_i\}$, который минимизирует некоторую функцию:
+\begin{equation} \label{leastSquares}
+    g(\{a_i\}) = \sum\limits^n_{i=0} (y_i-f(x_i, \{a_i\}))^2.
+\end{equation}
+
+Пусть между данными предположительно имеется линейная зависимость, того $n=2$ и $\{a_i\} = \{a_1,a_2\}$, а функция $f(x, a_1, a_2) = a_1x + a_2$. Чтобы функция $g(a_1,a_2)$ из уравнения \ref{leastSquares} была минимальна достаточным условием является равенство нулю её частных производных:
+\begin{equation}
+    \begin{cases}
+        \left (\frac{\partial g(a_1,a_2)}{\partial a_1} \right )_{a_2} = 0 \\
+        \left (\frac{\partial g(a_1,a_2)}{\partial a_2} \right )_{a_1} = 0
+    \end{cases},
+\end{equation}
+где $\left (\frac{\partial g(a_1,a_2)}{\partial a_1} \right )_{a_2}$~---~производная функции по $a_1$ при постоянной $a_2$.
+
+\progress{}
+\begin{enumerate}
+    \item Аппроксимировать зависимость будем квадратичной функцией вида $f(x,a,b,c) = ax^2 + bx + c$;
+    \item 
+\end{enumerate}
 
 \begin{center}
-    \textbf{Ход работы:}
+	\textbf{\Large Приложение}
 \end{center}
-\section{Установка программы и знакомство с интерфейсом}
-\begin{enumerate}
-    \item Скачайте по \href{https://mega.nz/folder/4R9xHYgT#LjgmYjooWK4WEsR4ylHn_w}{ссылке} программу;
-    \item Установить программу в режиме OriginPro Trial следуя правилам установщика; 
-    \item Заменить файлами из папки \verb=Crack\Fix3= (\verb=ok.dll= и \verb=ou.dll=) соответствующие файлы в папке с установленной программой (стандартный путь: \\ \verb=c:\Program Files\OriginLab\Origin2021\=, который у Вас может отличаться).
-\end{enumerate}
-\section{Оцифровка графиков}
-\begin{enumerate}
-    \item После установки и запуска программы откройте специальный инструмент OriginPro для оцифровки графиков (tools$\rightarrow$Digitizer). Импортируёте изображение. \\
-    \includegraphics[width=.7\textwidth]{HeatCapExm.png} 
-    \item Регулируйте положение линий, чтобы они соответствовали определённым значениям на осях рисунка. Укажите якорные значения в колонке Axis Value \\
-    \includegraphics[width=.7\textwidth]{HeatCapExmDragLines.png} 
-    \item Выберете ручной (Manually Pick Points) или автоматический (Auto Pick Points) способ задания точек. Оцифруйте все точки на большом графике.
-    \item После этого нажмите на кнопку Go to Data в окне Digitizer и экспортируйте таблицу в формат Excel (В главном окне File$\rightarrow$Export$\rightarrow$Excel). Желательно использовать формат .xslx
-\end{enumerate}   
-\section{Построение графиков}
-\begin{enumerate}
-    \item Используя данные из предыдущего задания составьте график. Дайте русское названия осей (шрифт: кегль -- 14 пт, семейство -- Roman) и расположите их по центру числовой шкалы;
-    \item Экспортировать рисунок в векторном формате, например в .wmf;
-\end{enumerate}
+\lstset{ %
+	language=[Visual]Basic,
+	keywordstyle=\color{brown},          % Стиль ключевых слов
+	breaklines=true,
+	numbers=left, 
+	backgroundcolor=\color{lightgray!5!white},
+	tabsize=4,
+	label=NormDistGen, 
+	caption={Код генератора выборки}
+	} 
+	\renewcommand{\lstlistingname}{Листинг}
+\begin{lstlisting}
+	Dim i As Long
+	Dim mean As Integer
+	Dim sigma As Integer
+	Dim random As Double
 
-% \textbf{Контрольные вопросы} \\
-% \begin{enumerate}
-%     \item 
-% \end{enumerate}
-% \input{method.tex}
-% \section{Рекомендуемая литература}
-% \begin{enumerate}
-%     \item \url{https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiLuJmd6-L6AhWrk4sKHZoBCE0QFnoECCUQAQ&url=https%3A%2F%2Foit.colorado.edu%2Fsites%2Fdefault%2Ffiles%2FOrigin2016_UserGuide.pdf.pdf&usg=AOvVaw1_NeiHINEkOymJnRjABlx8}
-% \end{enumerate}
+	mean = 10 * Rnd + 6
+	sigma = 3 * Rnd + 2
+	i = 501
+	Range("A1").Select
+	For i = 2 To i
+		random = WorksheetFunction.NormInv(Rnd, mean, sigma)
+		ActiveCell.Value = random
+		ActiveCell.Offset(1, 0).Select
+	Next i
+	\end{lstlisting}
 \end{document}
