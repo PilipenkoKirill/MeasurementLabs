@@ -11,6 +11,12 @@
     hidelinks
 ]{hyperref}
 %%%%%%%%%%%%%%Пользовательские команды%%%%%%%%%
+\setlength{\abovedisplayskip}{-15pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+% \usepackage[nodisplayskipstretch]{setspace} %Устанавливает интервал между формулами
+% \setstretch{1.1}
 \usepackage{latexsym,amsmath,amssymb,amsbsy,graphicx}
 \usepackage{icomma}
 \usepackage[version=4]{mhchem} % the canonical chemistry package (example: \ce{^{32}_{15}P})
@@ -55,6 +61,35 @@
 
 Интуитивно понятно, что разброс средней должен быть как-то связан с разбросом исходных данных. Основной характеристикой разброса средней выступает та же дисперсия.
 
+\section{Математическое ожидание}
+Свойства математического ожидания:
+\begin{enumerate}
+    \item M[X+Y] = M[X] + M[Y], где P(X|Y) = P(X) и P(Y|X) = P(Y) \\
+    \textit{Доказательство}
+    \begin{multline*}
+        M[X+Y]  = \sum\limits_i\sum\limits_j(x_i + y_i)p_{xi}p_{yj} = \\ \sum\limits_i\sum\limits_jx_ip_{xi}p_{yj} + \sum\limits_i\sum\limits_jy_jp_{xi}p_{yj} = \\
+        \sum\limits_ix_ip_{xi}\sum\limits_jp_{yj} + \sum\limits_jp_{yj}y_j\sum\limits_ip_{xi}
+    \end{multline*}
+    \item $M[XY] =  M[X]M[Y]$ \\
+    \textit{Доказательство}
+    \begin{multline*}
+        M[XY] = \sum\limits_i\sum\limits_jx_i y_ip_{xi}p_{yj} = \sum\limits_ix_ip_{xi}\sum\limits_jx_jp_{xj} = M[X]M[Y] 
+    \end{multline*}
+\end{enumerate}
+
+Свойства дисперсии:
+\begin{enumerate}
+    \item $D[X] = M[X^2] - M^2[X]$;
+    \item $D[a] = M[a^2] - M^2[a] = a^2 - a^2 = 0$;
+    \item $D[X+Y] = D[X] + D[Y]$ \\
+    \textit{Доказательство} \\
+    \begin{multline*}
+        D[X+Y] = M[(X+Y)^2] - M^2[X+Y] = \\ = M[X^2]+ 2M[XY] + M[Y^2] - (M^2[X]+2M[X]M[Y]+M^2[Y]) = \\ = M[X^2] - M^2[X] + M[Y^2] - M^2[Y] = D[X] + D[Y]
+    \end{multline*}
+    Замечание $D[X-Y] = D[X] + D[Y]$!
+    \item $D[X+a] = D[X]$;
+    \item $D[aX] = a^2D[X]$
+\end{enumerate}
 Дисперсия выборочных данных – это средний квадрат отклонения от средней, и рассчитать ее по исходным данным не составляет труда, например, в Excel предусмотрены специальные функции. Однако, как же рассчитать дисперсию средней, если в распоряжении есть только одна выборка и одно среднее арифметическое?
 Расчет дисперсии и стандартной ошибки средней арифметической
 
@@ -92,6 +127,57 @@ n – количество значений.
 Последняя формула на практике используется чаще всего, т.к. генеральная дисперсия обычно не известна. Чтобы не вводить новые обозначения, стандартную ошибку средней обычно записывают в виде соотношения стандартного отклонения выборки и корня объема выборки.
 https://statanaliz.info/statistica/opisanie-dannyx/dispersiya-srednej-arifmetiskoj/
 \section{Статистическое определение вероятности. Метод Монте-Карло}
+\section{Виды распределений}
+\begin{enumerate}
+    \item \textbf{Равномерное распределение}
+    \textit{Функция распределения}
+    \begin{equation}
+        f(x) = \begin{cases}
+            0, x < a \\
+            \frac{x-a}{b-a}, a \leqslant  x < b \\
+            1, x \geqslant  b
+        \end{cases}
+    \end{equation}
+    \textit{Плотность распределения}
+    \begin{equation}
+        \omega(x) = \begin{cases}
+            \frac{1}{b-a}, x \in [a,b] \\
+            0, x \notin [a,b]\\
+        \end{cases}
+    \end{equation}
+    \item \textbf{Распределение Пуассона}
+    Распределение Пуассона описывает дискретную случайную величину, представляющую собой число событий, произошедших за фиксированное время, при условии, что данные события происходят независимо друг от друга с некоторой фиксированной средней интенсивностью. 
+
+    Распределение Пуассона применимо, если:
+    \begin{enumerate}
+        \item случайная величина принимает только положительные значения, 
+        \item если длина интервала (например, t – время наблюдения) стремится к нулю, то вероятность одного события также стремится к нулю,
+        \item события, относящиеся к неперекрывающимся интервалам, являются статистически независимыми.
+    \end{enumerate} 
+    Вероятность наблюдения n событий, произошедших за время t определяется формулой (функция вероятности):
+    \begin{equation}
+        P_n = \frac{{\bar{n}}^n}{n!}e^{-\bar{n}},
+    \end{equation}
+    $\bar{n}$ – математическое ожидание случайной величины(среднее количество событий за  промежуток времени t)
+    \textit{Плотность распределения}
+    \begin{equation}
+        \omega(x) = \frac{\text{Г}(n+1,\bar{n})}{n!},
+    \end{equation}
+    \textbf{Пример.} Устройство состоит из 1000 элементов, работающих независимо один от другого. Вероятность отказа любого элемента в течение времени Т равна 0,002. Найти вероятность того, что за время Т откажут ровно три элемента.
+    Решение\\
+    Математическое ожидание в этом случае будет определяться как
+    \begin{equation}
+        N_0 = \sum_{i=1}^{n} P_i,
+    \end{equation} 
+    где n~---~это число элементов, а $P_i$~---~вероятность выхода из строя одного элемента и тогда $N_0 = 2$. И тогда вероятность выхода из строя трёх элементов будет определяться следующим образом:
+    \begin{equation}
+        P_3 = \frac{2^3}{3!}e^{-2} \approx 0,18 
+    \end{equation} 
+    \item Нормальное распределение. Расп-е Гаусса.
+    \item Экспоненциальное распределение.
+    \item Биномиальное распределение. Расп-е Бернулли.
+    \item Геометрическое распределение
+\end{enumerate}
 \section{Распределение $\chi^2$. Критерий Пирсона}
 До конца XIX века нормальное распределение считалась всеобщим законом вариации данных. Однако К. Пирсон заметил, что эмпирические частоты могут сильно отличаться от нормального распределения. Встал вопрос, как это доказать. Требовалось не только графическое сопоставление, которое имеет субъективный характер, но и строгое количественное обоснование.
 
@@ -104,7 +190,7 @@ https://statanaliz.info/statistica/opisanie-dannyx/dispersiya-srednej-arifmetisk
         \frac{1}{\text{Г}(\frac{n}{2})2^{\frac{n}{2}}}z^\frac{n-2}{2}e^{-\frac{z}{2}}, z>0,
     \end{cases}
 \end{equation}
-где $\text{Г}(x) = int\limits_{0}^{\infty} x^{z-1}e^{-z}dz$~---~гамма-функция Эйлера.
+где $\text{Г}(x) = \int\limits_{0}^{\infty} x^{z-1}e^{-z}dz$~---~гамма-функция Эйлера.
 Виды распределений
 \begin{itemize}
     \item Распределение Стьюдента (t-распределение).
@@ -116,5 +202,5 @@ https://statanaliz.info/statistica/opisanie-dannyx/dispersiya-srednej-arifmetisk
     \end{itemize}
     \item  Распределение Фишера
 \end{itemize}
-\printbibliography[title={Рекомендуемая литература}]
+% \printbibliography[title={Рекомендуемая литература}]
 \end{document}

@@ -4,17 +4,17 @@
 \title{Лабораторная работа №5 \\ \textit{Использования метода наименьших квадратов для аппроксимации результатов совместных измерений}}
 \begin{document}
 \maketitle
-Пусть имеется два набора экспериментальных данных: $x_{i}$ и $y_{i}$, где ${i=1,...n}$ такие что между ними предполагается зависимость вида $y = f(x)$. 
-Вводится некоторая (в простейшем случае линейная) функция $f(x, \{a_i\})$, которая определяется множеством неизвестных параметров $\{a_i\}$, где $i={1,...n}$.
+Пусть имеется два набора экспериментальных данных: $x_{i}$ и $y_{i}$, где ${i=1,...n}$\footnote{$n$~---~в данном случае это объёмом выборочных совокупностей} такие что между ними предполагается зависимость вида $y = f(x)$. 
+Вводится некоторая (в простейшем случае линейная) функция $f(x, \{a_j\})$, которая определяется множеством неизвестных параметров $\{a_j\}$, где $j={1,...n}$.
 
-Ставится задача получить такое множество, чтобы совокупность погрешностей $r_i=y_i-f(x_i, \{a_i\})$ была в некотором смысле минимальной.
+Ставится задача получить такое множество, чтобы совокупность погрешностей $r_i=y_i-f(x_i, \{a_j\})$ была в некотором смысле минимальной.
 
 Согласно методу наименьших квадратов решением этой задачи является набор параметров $\{a_i\}$, который минимизирует некоторую функцию:
 \begin{equation} \label{leastSquares}
-    g(\{a_i\}) = \sum\limits^n_{i=0} (y_i-f(x_i, \{a_i\}))^2.
+    g(\{a_i\}) = \sum\limits^n_{i=0} (y_i-f(x_i, \{a_j\}))^2.
 \end{equation}
 
-Пусть между данными предположительно имеется линейная зависимость, того $n=2$ и $\{a_i\} = \{a_1,a_2\}$, а функция $f(x, a_1, a_2) = a_1x + a_2$. Чтобы функция $g(a_1,a_2)$ из уравнения \ref{leastSquares} была минимальна достаточным условием является равенство нулю её частных производных:
+Пусть между данными предположительно имеется линейная зависимость, тогда $\{a_j\} = \{a_1,a_2\}$, а функция $f(x, a_1, a_2) = a_1x + a_2$. Чтобы функция $g(a_1,a_2)$ из уравнения \ref{leastSquares} была минимальна достаточным условием является равенство нулю её частных производных:
 \begin{equation}
     \begin{cases}
         \left (\frac{\partial g(a_1,a_2)}{\partial a_1} \right )_{a_2} = 0 \\
@@ -24,11 +24,44 @@
 где $\left (\frac{\partial g(a_1,a_2)}{\partial a_1} \right )_{a_2}$~---~производная функции по $a_1$ при постоянной $a_2$.
 
 \progress{}
+\section{Генерация выборки}
+\noindent\begin{itemize}
+	% \item Сгенерируйте выборку с помощью программы \texttt{NormDistGen.exe}. После запуска программы в той же папке появится новый файл;
+	\item Создайте файл с расширением \texttt{.xlsm}. По умолчанию вкладка \texttt{Разработчик} спрятана, поэтому надо её включить. Заходим по пути \texttt{Файл$\rightarrow$Параметры$\rightarrow$Настроить ленту} и ставим галочку на вкладке \texttt{Разработчик};
+	\item В разделе \texttt{Разработчик} нажмите на \texttt{макросы}, дайте любое название макроса и создайте его. Далее в открывшемся окне введите код из листинга \ref{SqDistGen};
+	\lstset{ %
+	language=[Visual]Basic,
+	keywordstyle=\color{brown},          % Стиль ключевых слов
+	breaklines=true,
+	commentstyle=\color{gray}, % white comments
+	numbers=left, 
+	backgroundcolor=\color{lightgray!5!white},
+	tabsize=4,
+	texcl=true
+	} 
+	\begin{lstlisting} 
+	Sub LinDistGen()
+		' Сюда надо поместить код из листинга
+	End Sub  
+	\end{lstlisting}
+	\item При запуске кода в первом и втором столбцах таблицы появится сгенерированные выборки $x_i$ и $y_i$ соответственно объёмом 50 элементов.
+\end{itemize}
+\section{Ручной поиск параметров} \label{manualMethod}
+Аппроксимировать полученную зависимость будем линейной функцией вида $f(x,a_1,a_2) = a_1x + a_2$.
 \begin{enumerate}
-    \item Аппроксимировать зависимость будем квадратичной функцией вида $f(x,a,b,c) = ax^2 + bx + c$;
-    \item 
+    \item Подставив $f(x,a_1,a_2)$ в формулу \ref{leastSquares} найдите частные производные\footnote{Более подробно о МНК можно узнать в учебнике \cite{Stepanova2014} на стр. 45}. В Excel можно и нужно производить расчёты таких коэффициентов как $\sum x_i, \sum x_i^2, \sum x_iy_i$ и т.п. \textbf{Получение частных производных и их дальнейшее упрощение нужно записывать в тетрадке!}
+    \item Решите полученную систему линейных уравнений. Запишите решение в отдельных ячейках таблицы Excel.
+\end{enumerate}
+\section{Машинный поиск параметров}
+\begin{enumerate}
+	\item Постройте график $y = f(x)$.
+	\item Добавьте линейную линию тренда на графике и зайдите в \texttt{Дополнительные параметры} как показано на скриншоте.\\
+	\includegraphics[width=.7\textwidth]{trendLine}
+	\item В открывшейся панели поставьте галочку рядом с \texttt{показывать уравнение на диаграмме}.
+	\item Сравните значения параметров $a_1$ и $a_2$ с полученными первым способом. Сделайте вывод.
 \end{enumerate}
 
+\printbibliography[title={Литература}]	
 \begin{center}
 	\textbf{\Large Приложение}
 \end{center}
@@ -39,24 +72,30 @@
 	numbers=left, 
 	backgroundcolor=\color{lightgray!5!white},
 	tabsize=4,
-	label=NormDistGen, 
+	label=SqDistGen, 
 	caption={Код генератора выборки}
 	} 
 	\renewcommand{\lstlistingname}{Листинг}
 \begin{lstlisting}
 	Dim i As Long
-	Dim mean As Integer
-	Dim sigma As Integer
+	Dim a As Double
+	Dim b As Double
+	Dim c As Double
+	Dim Error As Double
 	Dim random As Double
 
-	mean = 10 * Rnd + 6
-	sigma = 3 * Rnd + 2
-	i = 501
+	a = 2 * (2 * Rnd - 1)
+	b = 3 * (2 * Rnd - 1)
+	c = 2 * (2 * Rnd - 1)
+	Error = 0.2
+	i = 51
 	Range("A1").Select
 	For i = 2 To i
-		random = WorksheetFunction.NormInv(Rnd, mean, sigma)
-		ActiveCell.Value = random
-		ActiveCell.Offset(1, 0).Select
+		ActiveCell.Value = i
+		ActiveCell.Offset(0, 1).Select
+		random = a * i * i + b * i + c
+		ActiveCell.Value = random * (1 - Error + 2 * Error * Rnd)
+		ActiveCell.Offset(1, -1).Select
 	Next i
 	\end{lstlisting}
 \end{document}
