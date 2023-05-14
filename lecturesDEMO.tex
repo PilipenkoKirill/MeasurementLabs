@@ -15,6 +15,8 @@
 \setlength{\belowdisplayskip}{0pt}
 \setlength{\abovedisplayshortskip}{0pt}
 \setlength{\belowdisplayshortskip}{0pt}
+\usepackage{tikz}
+\usepackage{pgfplots}
 % \usepackage[nodisplayskipstretch]{setspace} %Устанавливает интервал между формулами
 % \setstretch{1.1}
 \usepackage{latexsym,amsmath,amssymb,amsbsy,graphicx}
@@ -146,7 +148,8 @@ https://statanaliz.info/statistica/opisanie-dannyx/dispersiya-srednej-arifmetisk
         \end{cases}
     \end{equation}
     \item \textbf{Распределение Пуассона}
-    Распределение Пуассона описывает дискретную случайную величину, представляющую собой число событий, произошедших за фиксированное время, при условии, что данные события происходят независимо друг от друга с некоторой фиксированной средней интенсивностью. 
+    
+    Описывает дискретную случайную величину, представляющую собой число событий, произошедших за фиксированное время, при условии, что данные события происходят независимо друг от друга с некоторой фиксированной средней интенсивностью. 
 
     Распределение Пуассона применимо, если:
     \begin{enumerate}
@@ -156,13 +159,15 @@ https://statanaliz.info/statistica/opisanie-dannyx/dispersiya-srednej-arifmetisk
     \end{enumerate} 
     Вероятность наблюдения n событий, произошедших за время t определяется формулой (функция вероятности):
     \begin{equation}
-        P_n = \frac{{\bar{n}}^n}{n!}e^{-\bar{n}},
+        P(n) = \frac{{\bar{n}}^n}{n!}e^{-\bar{n}},
     \end{equation}
     $\bar{n}$ – математическое ожидание случайной величины(среднее количество событий за  промежуток времени t)
     \textit{Плотность распределения}
     \begin{equation}
-        \omega(x) = \frac{\text{Г}(n+1,\bar{n})}{n!},
+        \omega(n) = e^{-\bar{n}}\sum\limits_{j=0}^n \frac{\bar{n}^j}{j!},
     \end{equation}
+    % где $\text{Г}(n) = \int\limits_{0}^{\infty} n^{z-1}e^{-z}dz$~---~гамма-функция Эйлера.
+
     \textbf{Пример.} Устройство состоит из 1000 элементов, работающих независимо один от другого. Вероятность отказа любого элемента в течение времени Т равна 0,002. Найти вероятность того, что за время Т откажут ровно три элемента.
     Решение\\
     Математическое ожидание в этом случае будет определяться как
@@ -173,9 +178,61 @@ https://statanaliz.info/statistica/opisanie-dannyx/dispersiya-srednej-arifmetisk
     \begin{equation}
         P_3 = \frac{2^3}{3!}e^{-2} \approx 0,18 
     \end{equation} 
-    \item Нормальное распределение. Расп-е Гаусса.
-    \item Экспоненциальное распределение.
-    \item Биномиальное распределение. Расп-е Бернулли.
+    Для расчёта дисперсия будем считать $\bar{n} = M[n]$, тогда:
+    \begin{multline}
+        D[n] = M[n^2] - \bar{n}^2 = \sum\limits_0^\infty n^2 \frac{\bar{n}^n}{n!}e^{-\bar{n}} - \bar{n}^2 = \bar{n}e^{-\bar{n}}\sum\limits_0^\infty n \frac{\bar{n}^{n-1}}{(n-1)!} - \bar{n}^2 = \\ = \bar{n}e^{-\bar{n}} \left (\sum\limits_0^\infty (n - 1)\frac{\bar{n}^{n-1}}{(n-1)!} + \sum\limits_0^\infty \frac{\bar{n}^{n-1}}{(n-1)!}\right ) - \bar{n}^2 = \\ = \bar{n}e^{-\bar{n}} \left (\bar{n}\sum\limits_0^\infty \frac{\bar{n}^{n-2}}{(n-2)!} + \sum\limits_0^\infty \frac{\bar{n}^{n-1}}{(n-1)!}\right ) - \bar{n}^2 = \\ = \bar{n}e^{-\bar{n}}(\bar{n}e^{\bar{n}}+e^{\bar{n}}) - \bar{n}^2 = \bar{n}.
+    \end{multline}
+    В выводе исполозовано разложение функции $e^{\bar{n}}$ в ряд Маклорена $\left (e^{\bar{n}} = \sum_0^\infty\frac{\bar{n}^n}{n!}\right )$
+    \item \textbf{Нормальное распределение. Расп-е Гаусса.}
+    
+    \textit{Плотность распределения}
+    \begin{equation}
+        \omega(x) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{(x-\bar{x})^2}{2\sigma^2}}
+    \end{equation}
+    \textit{Функция распределения}
+    \begin{equation}
+        f(x) = \frac{1}{2}\left [ 1 + erf \left (\frac{x-\bar{x}}{\sigma \sqrt{2}} \right ) \right ],
+    \end{equation}
+    где $erf(\frac{x-\bar{x}}{\sigma \sqrt{2}})$~---~функция ошибок ($erf(x) = \frac{2}{\sqrt{\pi}}\int\limits_{0}^{x} e^{-t^2}dt$)
+    \item \textbf{Экспоненциальное распределение.}
+    
+    \textit{Плотность распределения}
+    \begin{equation}
+        \omega(x) = \begin{cases}
+            \lambda e^{-\lambda x}, x \geqslant 0, \\
+            0, x \leqslant 0\\
+        \end{cases}
+    \end{equation}
+    \textit{Функция распределения}
+    \begin{equation}
+        f(x) = \begin{cases}
+            1 - e^{-\lambda x}, x \geqslant 0, \\
+            0, x \leqslant 0\\
+        \end{cases}
+    \end{equation}
+    \begin{tikzpicture}
+        \begin{axis}[
+            xmin = 0,
+            ymin = 0,
+            ylabel = {f(x)},
+            xlabel = {x},
+            clip=true,
+        ]
+            \addplot+[mark=none, domain=0:5, smooth] {1- e^(-0.5*x)}; 
+            \addplot+[mark=none, domain=0:5, smooth] {1- e^(-1*x)}; 
+            \addplot+[mark=none, domain=0:5, smooth] {1- e^(-1.5*x)}; 
+            % \legend{}          
+        \end{axis}
+    \end{tikzpicture}
+    \item \textbf{Биномиальное распределение}
+    %~---~дискретное распределение вероятностей, моделирующее случайный эксперимент произвольной природы, при заранее известной вероятности успеха или неудачи.
+
+    \textit{Функция вероятности}
+    \begin{equation}
+        p(x) = C^k_n p^kq^{n-k},
+    \end{equation}
+    где $C^k_n = \frac{n!}{(n-k)!k!}$; $p, q$~---~вероятность успеха и неудачи, соотвественно, k~---~количество успехов, n~---~общее количество неудач.
+
     \item Геометрическое распределение
 \end{enumerate}
 \section{Распределение $\chi^2$. Критерий Пирсона}
