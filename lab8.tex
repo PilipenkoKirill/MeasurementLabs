@@ -13,15 +13,20 @@ every last row/.style={after row=\bottomrule}}
 \progress{}
 \section{Установка программы}
 \begin{enumerate}
-	\item Скачайте программный пакет по \href{https://mega.nz/folder/RcEhUTQT#3cT2O6J15wOCQbFn4E7BBw}{ссылке};
-	\item Зайдите в папку «PTC.LICENSE.WINDOWS.2021-03-11-SSQ» по пути \path{_SolidSQUAD_\_SolidSQUAD_\PTC.LICENSE.WINDOWS.2021-03-11-SSQ}
-    и запустите \texttt{FillLicense.bat};
-	\item Сгенерированный файл \path{PTC_D_SSQ.dat} скопировать в \path{C:\Program Files\PTC};
-	\item Создайте переменную среды \path{PTC_D_LICENSE_FILE}, указывающую на этот файл (\path{PTC_D_SSQ.dat});
-	\item Установите PTC Mathcad Prime 7.0.0.0 Win64. Для этого необходимо иметь предустановленную на компьютере программу DAEMON Tools;
-	\item Перезаписать исходную папку программы <Mathcad Prime 7.0.0.0>
-    (по умолчанию: \path{C:\Program Files\PTC\Mathcad Prime 7.0.0.0} ) на взломанную;
-	\item При первом запуске Mathcad Prime 7.0 при запросе лицензии в PTC Mathcad License Wizard: Выберите «Настроить продукт для использования существующей лицензии» > «Далее» > «Файл» > «Обзор» > (перейдите к файлу \path{PTC_D_SSQ.dat}, сохраненному на вашем компьютере) > Настройка лицензии > Выход.
+	\item Скачайте программный пакет по \href{https://mega.nz/folder/BJVHALjD#w-peT3ym3XjbBn78NVb9OA}{ссылке};
+	\item Зайдите в папку «PTC.LICENSE.WINDOWS.2022-04-21-SSQ» по пути \path{_SolidSQUAD_\_SolidSQUAD_\PTC.LICENSE.WINDOWS.2022-04-21-SSQ}
+    и запустите \texttt{FillLicense.bat}. Должен появится новый файл с расширением \path{.dat};
+	\item Зайдите по пути \path{C:\Program Files} и создайте там пустую папку \path{PTC}, при необходимости предоставьте разрешения администратора. Сгенерированный файл \path{PTC_D_SSQ.dat} скопируйте в \path{C:\Program Files\PTC};
+	\item Создайте переменную среды:
+	\begin{enumerate}
+		% \item Нажмите \texttt{Пуск} и в поисковике наберите \texttt{Переменные среды}
+		\item Нажмите клавиши \texttt{Win+R} на клавиатуре, введите \path{sysdm.cpl}, а затем \texttt{Enter};
+		\item На вкладке \texttt{Дополнительно} нажмите кнопку \texttt{Переменные среды…};
+		\item В разделе \texttt{Переменные среды пользователя} нажмите кнопку \texttt{Создать}. Укажите имя переменной \path{PTC_D_LICENSE_FILE} и путь к исполняемому файлу \path{C:\Program Files\PTC\PTC_D_SSQ.dat}, затем подтвердить изменения.
+	\end{enumerate}
+	\item Установите PTC Mathcad Prime 9.0.0.0 Win64. Для этого необходимо иметь предустановленную на компьютере программу DAEMON Tools или её свободный аналог --- \href{https://www.elby.ch/products/vcd.html}{Virtual CloneDrive};
+	\item Все файлы в папке \path{_SolidSQUAD_\Mathcad Prime 9.0.0.0} скопировать и вставить с заменой в папку с установленной программой (по умолчанию: \path{C:\Program Files\PTC\Mathcad Prime 9.0.0.0});
+	\item При первом запуске Mathcad Prime 9.0 при запросе лицензии в PTC Mathcad License Wizard: Выберите «Настроить продукт для использования существующей лицензии» > «Далее» > «Файл» > «Обзор» > (перейдите к файлу \path{PTC_D_SSQ.dat}, сохраненному на вашем компьютере) > Настройка лицензии > Выход.
 \end{enumerate}
 \section{Арифметические вычисления}
 \noindent Вычислить значение выражения
@@ -38,8 +43,8 @@ every last row/.style={after row=\bottomrule}}
 \noindent Задать функцию и определить ее значения в указанной области:
 
 \begin{enumerate}
-	\item $\mathrm{y}(\mathrm{x})=\sqrt{x^3+2 x^2-1}+\frac{x^3+2}{x-1}, \mathrm{x}=1 . .10$;
-	\item $\Phi(\varphi)=\operatorname{tg}\left(\sin ^2 \varphi\right)-\frac{\cos \varphi}{1+\sin \varphi}, \varphi=0, \pi / 4 . . \pi$.
+	\item $\mathrm{y}(\mathrm{x})=\sqrt{x^3+2 x^2-1}+\frac{x^3+2}{x-1},\quad \mathrm{x}=2 . .10$;
+	\item $\Phi(\varphi)=\operatorname{tg}\left(\sin ^2 \varphi\right)-\frac{\cos \varphi}{1+\sin \varphi}, \quad \varphi=0, \pi / 4 . . \pi$.
 \end{enumerate}
 \noindent Вычислите пределы:
 \begin{multicols}{2}
@@ -67,7 +72,7 @@ every last row/.style={after row=\bottomrule}}
 \begin{multicols}{2}
 \begin{enumerate}
 	\item $\int\limits_{-\pi/4}^{2\pi} \operatorname{arctg}(\sqrt[3]{6 x-1}) d x$;
-	\item $\int\limits_{0}^{\infty} x^{z-1}e^{-z}dz$ (гамма-функция Эйлера).
+	\item $\int\limits_{0}^{\infty} x^4e^{-5x^2}dx$. 
 \end{enumerate}
 \end{multicols}
 % \questions{}
