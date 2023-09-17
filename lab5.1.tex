@@ -1,0 +1,58 @@
+%!TEX program = xelatex.exe
+\documentclass[14pt,a4paper]{article}
+\input{setup.tex}
+\title{Лабораторная работа №5.1 \\ \textit{Построение графиков в программе SciDAVis}}
+\begin{document}
+\maketitle
+Не смотря на то, что Excel успешно справляется с большинством задач анализа и визуализации данных он используется в первую очередь для предварительной обработки данных. Для построение красивых графиков используются другие программы, такие как: \href{https://www.originlab.com/index.aspx?go=Products/Origin}{Origin и OriginPro}, \href{https://www.python.org/}{Python} + библиотеки matplotlib+numpy+scipy (самый продвинутый и гибкий набор инструментов!), \href{https://scidavis.sourceforge.net/}{SciDAVis}, \href{https://www.ctan.org/pkg/pgfplots}{pgfplots} (пакет \LaTeX, который используется в данном сборнике лабораторных работ), Gnuplot, LabPlot, Grace QtiPlot и др. Origin\footnote{С инструкцией по установке OriginPro можно ознакомиться в приложении} является наиболее универсальной и многофункциональной программой, при этом является платной. Python с подключенными библиотеками предлагает самый продвинутый и гибкий набор инструментов, но при этом он сложен для новичков и управление осуществляется без \href{https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B0%D1%84%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81_%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F}{GUI}.
+
+В силу изложенного предлагается остановиться на программе SciDAVis. SciDAVis~---~это бесплатное и свободное программное обеспечение, которое предлагает пользователю дружелюбный и интуитивно понятный интерфейс. 
+
+\begin{center}
+    \textbf{Ход работы:}
+\end{center}
+\section{Установка программы и знакомство с интерфейсом}
+\begin{enumerate}
+    \item Скачайте по \href{https://sourceforge.net/projects/scidavis/files/latest/download}{ссылке} программу;
+    \item Установите программу следуя рекомендациям установщика.
+\end{enumerate}
+% \section{Оцифровка графиков}
+% \begin{enumerate}
+%     \item После установки и запуска программы откройте специальный инструмент OriginPro для оцифровки графиков (tools$\rightarrow$Digitizer). Импортируёте изображение. \\
+%     \includegraphics[width=.7\textwidth]{HeatCapExm.png} 
+%     \item Регулируйте положение линий, чтобы они соответствовали определённым значениям на осях рисунка. Укажите якорные значения в колонке Axis Value \\
+%     \includegraphics[width=.7\textwidth]{HeatCapExmDragLines.png} 
+%     \item Выберете ручной (Manually Pick Points) или автоматический (Auto Pick Points) способ задания точек. Оцифруйте все точки на большом графике.
+%     \item После этого нажмите на кнопку Go to Data в окне Digitizer и экспортируйте таблицу в формат Excel (В главном окне File$\rightarrow$Export$\rightarrow$Excel). Желательно использовать формат .xslx
+% \end{enumerate}   
+\section{Построение графиков}
+\begin{enumerate}
+    \item Используя данные из предыдущего предыдущей лабораторной работы (№5) составьте график. 
+    \item Дайте названия осей в формате: \verb|{физ. вел.}, {ед. изм.}|, например x -- сила тока в амперах, а y -- мощность в ваттах, или можете придумать названия осей сами, вспомнив другие квадратичные зависимости в физике. Далее расположите названия осей по центру числовой шкалы. Параметры шрифта по возможности должны быть такими же, как и в предполагаемом документе, где будет находится график: кегль -- 14 пт, семейство -- Roman);
+    \item Проведите линейную регрессию для точек выборки;
+    \item Задайте относительную погрешность 5\% для оси Y;
+    \item Оформите легенду, добавив название "Экспериментальные точки" для точек выборки, а для аппроксимирующей линии укажите формулу и параметры аппроксимации с правильно округлёнными погрешностями (можно получить из консоли, информация в которой появится после добавления линейной регрессии);
+    \item Цветовую палитру можете выбрать любую, главное чтобы цвета хорошо контрастировали с фоном;
+    \item Экспортировать рисунок в векторном формате, например в \verb|.svg|.
+\end{enumerate}
+
+% \textbf{Контрольные вопросы} \\
+% \begin{enumerate}
+%     \item 
+% \end{enumerate}
+% \input{method.tex}
+% \section{Рекомендуемая литература}
+% \begin{enumerate}
+%     \item \url{https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiLuJmd6-L6AhWrk4sKHZoBCE0QFnoECCUQAQ&url=https%3A%2F%2Foit.colorado.edu%2Fsites%2Fdefault%2Ffiles%2FOrigin2016_UserGuide.pdf.pdf&usg=AOvVaw1_NeiHINEkOymJnRjABlx8}
+% \end{enumerate}
+
+\begin{center}
+	\textbf{\Large Приложение}
+\end{center}
+Инструкция к установке программы OriginPro
+\begin{enumerate}
+    \item Скачайте по \href{https://mega.nz/folder/4R9xHYgT#LjgmYjooWK4WEsR4ylHn_w}{ссылке} программу;
+    \item Установить программу в режиме OriginPro Trial следуя правилам установщика; 
+    \item Заменить файлами из папки \path{Crack\Fix3} (\verb=ok.dll= и \verb=ou.dll=) соответствующие файлы в папке с установленной программой (стандартный путь: \path{c:\Program Files\OriginLab\Origin2021\}, который у Вас может отличаться).
+\end{enumerate}
+\end{document}
