@@ -8,7 +8,7 @@
 \begin{equation} \label{indirectError}
     \Delta f = \left | \frac{\partial f(x_1, x_2, \ldots, x_n)}{\partial x_1} \right |_{x_2, \ldots, x_n} \Delta x_1 + \ldots + \left | \frac{\partial f(x_1, x_2, \ldots, x_n)}{\partial x_n} \right |_{x_1, \ldots, x_{n-1}} \Delta x_n,
 \end{equation}
-где $\left | \frac{\partial f(x_1, x_2, \ldots, x_n)}{\partial x} \right |_{x_2, \ldots, x_n}$~---~частная производная по $x_1$ при постоянных $x_2, \ldots, x_n$; $\Delta x_1 \ldots \Delta x_n$~---~абсолютные погрешности прямых измерений.
+где $\left | \frac{\partial f(x_1, x_2, \ldots, x_n)}{\partial x_1} \right |_{x_2, \ldots, x_n}$~---~частная производная по $x_1$ при постоянных $x_2, \ldots, x_n$; $\Delta x_1 \ldots \Delta x_n$~---~абсолютные погрешности прямых измерений.
 
 \textbf{Пример.}
 Студент хочет измерить мощность силы, которая заставляет кирпич равномерно двигаться вверх по наклонной плоскости. Проведя теоретические расчёты студент получил рабочую формулу $N = F\upsilon\cos{\alpha}$, где $F, \upsilon, \alpha$~---~величины, получаемые в результате прямых измерений. Применив формулу \ref{indirectError} найдём частные производные:
@@ -24,6 +24,7 @@
 где $\Delta\alpha$ измеряется в радианах ($1^\circ \sim \pi/180$). 
 
 Пусть в результате эксперимента и из паспортных данных были получены следующие значения:
+
 \begin{tabular}{|c|c|c|c|c|c|}
     \hline
     $F$, Н & $\Delta F$, Н & $\upsilon$, см/с & $\Delta \upsilon$, см/с & $\alpha$, рад & $\Delta \alpha$, рад\\ \hline
@@ -32,7 +33,7 @@
 
 И тогда можно посчитать значение абсолютной погрешности косвенных измерений:
 \begin{equation}
-    \Delta N = 5 \cdot 0,1 \cos{\pi/6} + 7\cdot 0,2\cos{\pi/6} + 7\cdot 5 \cdot 0,002\pi\sin{\pi/6} \approx 1,68\;\text{Вт}.
+    \Delta N = 5 \cdot 0,1 \cos{\frac{\pi}{6}} + 7\cdot 0,2\cos{\frac{\pi}{6}} + 7\cdot 5 \cdot 0,002\pi\sin{\frac{\pi}{6}} \approx 1,68\;\text{Вт}.
 \end{equation}
 \progress{}
 \section{}
@@ -56,6 +57,6 @@ $H(I,R,\alpha) = \frac{NI}{2R\cdot tg\alpha}$, $Z(R,\omega, C) = \sqrt{R^2+\left
 
 \textbf{Методические рекомендации к заданию для обучающихся:} 
 
-Результаты выполнения задания оформляются в тетради, или на листочке, а также в файле с расширением ".xlsx"
+Результаты выполнения задания оформляются в тетради, или на листочке, а также в файле с расширением <<.xlsx>>
 % \input{method.tex}
 \end{document}
