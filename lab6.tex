@@ -128,7 +128,9 @@ x\textsubscript{2},\ldots,x\textsubscript{n} --} неизвестные вели
     \sum\limits_k^n\varepsilon_k = \sum\limits_k^m I_kR_k
 \end{equation}
 
-\textbf{Пример}
+\begin{center}
+    \textbf{Пример}
+\end{center}
 
 \begin{tabular}{p{3cm}|l}
     Дано & \multirow{7}{*}{\begin{circuitikz}[american]
@@ -148,12 +150,12 @@ x\textsubscript{2},\ldots,x\textsubscript{n} --} неизвестные вели
 
 
 
-Используя \textbf{первое правило Кирхгофа}, можно записать n-1 уравнений для цепи, где n~---~количество узлов. В нашем случае количество узлов n=2, а значит нужно составить только одно уравнение:
+Используя \textbf{первое правило Кирхгофа}, можно записать $n-1$ уравнений для цепи, где n~---~количество узлов. В нашем случае количество узлов $n=2$, а значит нужно составить только одно уравнение:
 \begin{equation} \label{firstLow}
     I_3 -I_1 - I_2 = 0
 \end{equation}
 
-Затем используя \textbf{второе правило} составим уравнения для первого и второго контуров цепи. Направления обхода выбраны произвольными, при этом если направление тока через резистор совпадает с направлением обхода, берем со знаком плюс, и наоборот если не совпадает, то со знаком минус. Аналогично с источниками ЭДС.
+Затем используя \textbf{второе правило} составим уравнения для первого и второго контуров цепи. Направления обхода выбраны произвольно, при этом если направление тока через резистор совпадает с направлением обхода, берем со знаком плюс, и наоборот если не совпадает, то со знаком минус. Аналогично с источниками ЭДС.
 
 На примере первого контура --- ток $I_1$ и $I_3$ совпадают с направлением обхода контура (против часовой стрелки), ЭДС $\varepsilon_1$ также совпадает, поэтому берем их со знаком плюс.
 
@@ -196,43 +198,122 @@ x\textsubscript{2},\ldots,x\textsubscript{n} --} неизвестные вели
     \end{pmatrix}
 \end{equation}
 \progress{}
-
+\newcounter{NumVar}
+\setcounter{NumVar}{1}
+\newcounter{NumTask}
+\newcommand\showNumTask{\stepcounter{NumTask}\theNumTask}
+\newcommand{\variant}{
+\begin{center}
+    \Large{Вариант №\theNumVar}
+    \setcounter{NumTask}{0}
+    \addtocounter{NumVar}{1}
+\end{center}    
+}
 
 Используя первое и второе правила Кирхгофа получите систему уравнений для каждой электрической схемы. Используя уравнение \ref{Xmatrix} получите матрицу токов, проходящих через каждый элемент цепи.
-\section{}
-\begin{wrapfigure}[4]{l}{.3\textwidth}
-        \begin{circuitikz}[american, scale=.53, transform shape]
-            \draw (0,0) to [battery1, v_=$\varepsilon_1$, l=$r_1$] (0,-3);
-            \draw (2.3,0) to [battery1, v_=$\varepsilon_2$, l=$r_2$, *-*] (2.3,-3);
-            \draw(0,0) to (2,0) to [generic,l_=$R_{1}$,i=$I_{1}$] (6,0) to (8,0);
-            \draw(6,0) to[generic,l_=$R_{2}$,i=$I_{2}$,*-*](6,-3);
-            \draw (6,0) to (8,0) to [I, l_=$G$,i=$I_{G}$] (8,-3);
-            \draw(8,-3) to [generic,l_=$R_{3}$] (0,-3);
-        \end{circuitikz}
-\end{wrapfigure}
-Найти величину тока через гальванометр $G$, включенный в цепь, если $\varepsilon_1=\varepsilon_2=1,5$ В, внутренние сопротивления источников ЭДС равны $r_1=r_2=0,5$ Ом, $R_1=R_2=2$ Ом, $R_3=1$ Ом, $R_G=3$ Ом.
 
-\section{}
-\begin{wrapfigure}[4]{l}{.3\textwidth}
+\variant{}
+\showNumTask. Найти величину тока через гальванометр $G$, включенный в цепь, если $\varepsilon_1=\varepsilon_2=1,5$ В, внутренние сопротивления источников ЭДС равны $r_1=r_2=0,5$ Ом, $R_1=R_2=2$ Ом, $R_3=1$ Ом, $R_G=3$ Ом.
+\begin{center}
+    \begin{circuitikz}[american, scale=.53, transform shape]
+        \draw (0,0) to [battery1, v_=$\varepsilon_1$, l=$r_1$] (0,-3);
+        \draw (2.3,0) to [battery1, v_=$\varepsilon_2$, l=$r_2$, *-*] (2.3,-3);
+        \draw(0,0) to (2,0) to [generic,l_=$R_{1}$,i=$I_{1}$] (6,0) to (8,0);
+        \draw(6,0) to[generic,l_=$R_{2}$,i=$I_{2}$,*-*](6,-3);
+        \draw (6,0) to (8,0) to [I, l_=$G$,i=$I_{G}$] (8,-3);
+        \draw(8,-3) to [generic,l_=$R_{3}$] (0,-3);
+    \end{circuitikz}
+\end{center}
+\showNumTask. Найти величины токов во всех участках цепи, если $\varepsilon_1=20$ В, $\varepsilon_2=33$ В, $r_1=0,2$ Ом, $r_2=0,5$ Ом, $R_1=0,8$ Ом, $R_2=2$ Ом, $R_3=14,3$ Ом, $R_4=23,4$ Ом, $R_5=34,3$ Ом, $R_6=40,3$ Ом, $R_7=12$ Ом.
+\begin{center}
     \begin{circuitikz}[american, scale=.65, transform shape]
         \draw(0,0) to[generic, l=$R_1$] (0,2) to (1,2) to[generic, l=$R_2$] (1,0) to (0,0);
         \draw(0.5,2) to[battery1, v_<=$\varepsilon_1$,*-, invert] (0.5,3) to (5.5,3) to [short,-*] (5.5,2);
         \draw(5,0) to[generic, l=$R_4$] (5,2) to (6,2) to[generic, l=$R_5$] (6,0) to (5,0);
         \draw(5.5,0) to[short, *-] (5.5,-0.5) to[generic, l=$R_6$] (3,-0.5) to[generic, l=$R_7$] (0.5,-0.5) to [short, -*] (0.5,0);
         \draw(3,-0.5) to[generic, l=$R_3$, *-] (3,2) to[battery1, v_<=$\varepsilon_2$,-*, invert] (3,3);
-\end{circuitikz}
-\end{wrapfigure}
-Найти величины токов во всех участках цепи, если $\varepsilon_1=20$ В, $\varepsilon_2=33$ В, $r_1=0,2$ Ом, $r_2=0,5$ Ом, $R_1=0,8$ Ом, $R_2=2$ Ом, $R_3=14,3$ Ом, $R_4=23,4$ Ом, $R_5=34,3$ Ом, $R_6=40,3$ Ом, $R_7=12$ Ом.
-
-\section{}
-\begin{wrapfigure}[7]{l}{.3\textwidth}
+    \end{circuitikz}
+\end{center}
+\showNumTask. Определить величину токов во всех участках цепи и мощность, развиваемую источниками ЭДС, если $\varepsilon_1=6$ В, $\varepsilon_2=10$ В, $\varepsilon_3=20$ В, $r_1=0,2$ Ом, $r_2=0,2$ Ом, $r_3=0,4$ Ом, $R_1=19,8$ Ом, $R_2=45,8$ Ом, $R_3=100$ Ом, $R_4=99,6$ Ом. 
+\begin{center}
     \begin{circuitikz}[american, scale=.7, transform shape]
         \draw(0,0) to [battery1, v<=$\varepsilon_1$, l_=$r_1$, invert]++ (0,1.5) to[generic, l=$R_1$] (0,4) to (2.2,4) to[generic, l=$R_4$] (5,4) to[generic, l=$R_3$] (5,1.5) to[battery1, v_=$\varepsilon_3$, l=$r_3$] (5,0) to (0,0);
         \draw(2.2,0) to[battery1, v<=$\varepsilon_2$, l_=$r_2$,*-,invert] (2.2,1.5) to[generic, l=$R_2$, -*] (2.2,4);
     \end{circuitikz}
-\end{wrapfigure}
-Определить величину токов во всех участках цепи и мощность, развиваемую источниками ЭДС, если $\varepsilon_1=6$ В, $\varepsilon_2=10$ В, $\varepsilon_3=20$ В, $r_1=0,2$ Ом, $r_2=0,2$ Ом, $r_3=0,4$ Ом, $R_1=19,8$ Ом, $R_2=45,8$ Ом, $R_3=100$ Ом, $R_4=99,6$ Ом. 
-% \begin{enumerate}
-%     \item 
-% \end{enumerate} 
+\end{center}
+
+\variant{}
+
+\showNumTask. В цепи найти силу тока в каждой ветви, если ЭДС источников тока равны $\varepsilon_1=1$ В, $\varepsilon_2=3$ В, $\varepsilon_3=5$ В, а сопротивления $R_1= 2$ Ом, $R_2 = 4$ Ом, $R_3 = 2$ Ом. Внутренним сопротивлением источников пренебречь.
+\begin{center}
+    \begin{circuitikz}[american, scale=.7, transform shape]
+        \draw(0,0) to[generic, l=$R_1$] (0,2) to[battery1, v=$\varepsilon_1$] (0,4) to (6,4) to (6,0) to[generic=$R_3$] (4,0) to[battery1, v<=$\varepsilon_3$, invert] (2,0) to (0,0);
+        \draw(2,0) to[battery1, v<=$\varepsilon_2$, *-, invert] (2,2) to[generic, l=$R_2$, -*] (2,4);
+    \end{circuitikz}
+\end{center}
+\showNumTask. Найти величину тока в каждой ветви мостика Уитстона, если ЭДС источника тока 15 В, внешние сопротивления $R_1 =30$ Ом, $R_2 = 45$ Ом, $R_3 =200$ Ом и сила тока, идущего через гальванометр, равна нулю. Сопротивление источника $r = 3$ Ом.
+\begin{center}
+    \begin{circuitikz}[american, scale=.7, transform shape]
+        \draw(0,0) to (0,3) to[generic, l=$R_1$] (2.5,5) to[generic, l=$R_2$] (5,3) to (5,0) to[short] (3,0) to[battery1, v<=$\varepsilon$, l_=$r$, invert] (0,0);
+        \draw(0,3) to[generic, l_=$R_3$, *-*] (2.5,1) to[generic, l_=$R_4$, -*] (5,3);
+        \draw(2.5,1) to[I, l_=$G$, -*] (2.5,5) ;
+    \end{circuitikz}
+\end{center}
+\showNumTask. Найдите токи во всех участках цепи, если внутреннее сопротивление источников равно $0,3$ Ом, а внешнее сопротивление $R_1 = 5$ Ом, $R_2 = 65$ Ом, $R_3 = 17$ Ом, $R_4 = 13$ Ом.
+\begin{center}
+    \begin{circuitikz}[american, scale=.7, transform shape]
+        \draw(0,0) to[battery1, v=$\varepsilon_1$] (0,6) to[battery1, v<=$\varepsilon_2$,invert] (6,6) to[generic=$R_1$] (6,0) to[generic=$R_2$] (0,0);
+        \draw(6,0) to[battery1, v=$\varepsilon_4$, *-] (3,3) to [generic=$R_4$, *-*] (0,6);
+        \draw(0,0) to[generic=$R_3$, *-] (3,3) to[battery1, v=$\varepsilon_3$, -*] (6,6);
+    \end{circuitikz}
+\end{center}
+\variant{}
+\showNumTask. В схеме элементы с $\varepsilon_1= 2,1$ В, $\varepsilon_2= 1,9$ В,  и сопротивления $R_1 = 45$ Ом, $R_2 = 10$ Ом и $R_3 = 10$ Ом. Найти силу тока во всех участках цепи. Внутренним сопротивлением элементов пренебречь.
+\begin{center}
+    \begin{circuitikz}[american, scale=.7, transform shape]
+        \draw(0,0) to[battery1, v=$\varepsilon_1$] (0,4) to[battery1, v<=$\varepsilon_2$,invert] (5,4) to[generic=$R_1$] (5,0) to[generic=$R_2$] (0,0);
+        \draw(5,0) to[generic=$R_3$, *-*] (0,4);
+    \end{circuitikz}
+\end{center}
+\showNumTask. Найти величину тока, проходящего через каждый из элементов, внутренние сопротивления которых одинаковы и равны $0,3$ Ом, a $\varepsilon_1=1,3$ В, $\varepsilon_2 = 1,4$ В, $\varepsilon_3=1,5$ В, $R = 0,6$ Ом.
+\begin{center}
+    \begin{circuitikz}[american, scale=.7, transform shape]
+        \draw(0,0) to (0,3) to[battery1, v<=$\varepsilon_2$,*-*, invert] (5,3) to (5,0) to[generic=$R$] (0,0);
+        \draw(0,3) to (1,4.5) to[battery1, v<=$\varepsilon_1$,invert] (4,4.5) to (5,3) to (4,1.5) to[battery1, v=$\varepsilon_3$] (1,1.5) to (0,3);
+    \end{circuitikz}
+\end{center}
+\showNumTask.	Найти токи, протекающие в участках цепи, если каждое из сопротивлений $R_1=R_3=R_5=4$ Ом, $R_7=R_8=R_9=1$ Ом, а $R_2=R_4=R_6=2$ Ом. $\varepsilon_1 = 23$ В, $\varepsilon_2 = 15$ В, $\varepsilon_3 = 8$ В. Внутренним сопротивлением источников пренебречь.
+\begin{center}
+    \begin{circuitikz}[american, scale=.7, transform shape]
+        \draw(0,4) to[battery1, v=$\varepsilon_1$] (0,0) to[generic=$R_9$] (2,0) to[generic=$R_8$] (4,0) to[generic=$R_7$] (6,0) to[generic=$R_6$] (6,4) to[generic, l_=$R_5$] (4,4) to[generic, l_=$R_3$] (2,4) to [generic, l_=$R_1$] (0,4);
+        \draw(2,0) to[generic=$R_2$, *-] (2,2) to[battery1, v=$\varepsilon_2$, -*] (2,4);
+        \draw(4,0) to[generic=$R_4$, *-] (4,2) to[battery1, v<=$\varepsilon_3$, -*, invert] (4,4);
+    \end{circuitikz}
+\end{center}
+
+\variant{}
+\showNumTask. Найти величины токов во всех участках цепи, если $\varepsilon =20$ В, $\varepsilon =33$ В, внутренние сопротивления которых равны $0,2$ Ом и $0,5$ Ом соответственно. Внешние сопротивления $R =0,8$ Ом и $R =2$ Ом.
+\begin{center}
+    \begin{circuitikz}[american, scale=.7, transform shape]
+        \draw(0,0) to (0,4) to[generic, l=$R_1$] (4,4) to (4,2.5) to[generic, l=$R_2$] (4,0) to[battery1, v_=$\varepsilon_1$, l=$r_1$] (0,0);
+        \draw(0,2.5) to[battery1, v=$\varepsilon_2$, l_=$r_2$] (4,2.5); 
+    \end{circuitikz}
+\end{center}
+\showNumTask. Определить ток в каждой цепи, если $\varepsilon_1=5,6$ В, $\varepsilon_2=4$ В, $r=0,4$ Ом, $R_1=30$ Ом, $R_2=24$ Ом, $R_3=50$ Ом, $R_4=40$ Ом, $R_5=60$ Ом
+\begin{center}
+    \begin{circuitikz}[american, scale=.7, transform shape]
+        \draw(0,0) to (0,6) to[generic, l=$R_3$] (2,6) to[battery1, v=$\varepsilon_1$] (4,6) to[generic, l=$R_4$] (6,6) to (6,0) to[generic, l_=$R_2$] (3,0) to[generic, l_=$R_1$] (0,0);
+        \draw(0,4) to[generic, l=$R_5$, *-*] (6,4);
+        \draw(0,2) to[battery1, v=$\varepsilon_2$, *-] (3,2) to[I, l_=$G$, -*] (6,2);
+    \end{circuitikz}
+\end{center}
+\showNumTask. Начертите эквивалентную схему и найдите токи во всех участках цепи, если внутреннее сопротивление источников равно $0,3$ Ом, а внешнее сопротивление $R_1 = 9$ Ом, $R_2 = 12$ Ом, $R_3 = 32$ Ом, $R_4 = 21$ Ом.
+\begin{center}
+    \begin{circuitikz}[american, scale=.7, transform shape]
+        \draw(0,0) to[battery1, v=$\varepsilon_1$] (0,6) to[battery1, v<=$\varepsilon_2$,invert] (6,6) to[generic=$R_1$] (6,0) to[generic=$R_2$] (0,0);
+        \draw(6,0) to[battery1, v=$\varepsilon_4$, *-] (3,3) to [generic=$R_4$, -*] (0,6);
+        \draw(0,0) to[generic=$R_3$, *-] (3,3) to[battery1, v=$\varepsilon_3$, -*] (6,6);
+    \end{circuitikz}
+\end{center}
+
 \end{document}
